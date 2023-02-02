@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import ru.sukharenko.springtest.metroPayment.models.BalanceReplenishment;
-import ru.sukharenko.springtest.metroPayment.models.Cards;
 import ru.sukharenko.springtest.metroPayment.services.BalanceReplenishmentServices;
 import ru.sukharenko.springtest.metroPayment.util.CardNotCreatedException;
 
@@ -16,11 +15,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/br")
-public class BalanceReplenishmentRepositoryController {
+public class BalanceReplenishmentController {
 
     private final BalanceReplenishmentServices bRS;
 
-    public BalanceReplenishmentRepositoryController(BalanceReplenishmentServices bRS) {
+    public BalanceReplenishmentController(BalanceReplenishmentServices bRS) {
         this.bRS = bRS;
     }
     @GetMapping("/hello") //http://localhost:8080/br/hello

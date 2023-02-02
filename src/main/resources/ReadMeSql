@@ -17,7 +17,7 @@ CREATE TABLE Trip(  -- таблица оплаты проезда
 
 CREATE TABLE Balance_replenishment(  -- таблица пополнения баланса
     id SERIAL PRIMARY KEY,
-    card_id int NOT NULL, -- foreign key for id(Table - cards)
+    card_id int REFERENCES cards(id) ON DELETE NOT NULL, -- foreign key for id(Table - cards)
     date_trip TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, -- время платежа
     price_trip int NOT NULL -- размер пополнения в у.е.
 );

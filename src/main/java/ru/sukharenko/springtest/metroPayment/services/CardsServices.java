@@ -34,10 +34,13 @@ public class CardsServices {
         cardsRepository.save(card);
     }
 
-    public int findBalabce (String email){ // вернем баланс по емайлу
+    public int findBalance (String email){ // вернем баланс по емайлу
         Optional<Cards> foundCard = cardsRepository.findByEmail(email);
         return foundCard.get().getCardBalance();
     }
+
+
+
 
 
 

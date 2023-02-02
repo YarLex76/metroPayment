@@ -16,8 +16,8 @@ public class BalanceReplenishment {
     private long id;
 
     @ManyToOne
-    @JoinColumn (name = "card_id", referencedColumnName = "id")
-    private Cards card;
+    @JoinColumn (name = "card_id", referencedColumnName = "id") // для объединения таблиц по внешнему ключу
+    private Cards owner; // владелец платежа
 
     @Column(name = "date_trip")
     @Temporal(TemporalType.TIMESTAMP) // для конвертации даты из java в дату DB
@@ -30,9 +30,9 @@ public class BalanceReplenishment {
     public BalanceReplenishment() {
     }
 
-    public BalanceReplenishment(Cards card, Date dateTrip) {
-        this.card = card;
-        this.dateTrip = dateTrip;
+    public BalanceReplenishment(Cards owner, int priceTrip) {
+        this.owner = owner;
+        this.priceTrip = priceTrip;
     }
 
     public long getId() {
@@ -43,12 +43,12 @@ public class BalanceReplenishment {
         this.id = id;
     }
 
-    public Cards getCard() {
-        return card;
+    public Cards getOwner() {
+        return owner;
     }
 
-    public void setCard(Cards card) {
-        this.card = card;
+    public void setOwner(Cards owner) {
+        this.owner = owner;
     }
 
     public Date getDateTrip() {
@@ -71,7 +71,7 @@ public class BalanceReplenishment {
     public String toString() {
         return "BalanceReplenishment{" +
                 "id=" + id +
-                ", card=" + card +
+                ", owner=" + owner +
                 ", dateTrip=" + dateTrip +
                 ", priceTrip=" + priceTrip +
                 '}';

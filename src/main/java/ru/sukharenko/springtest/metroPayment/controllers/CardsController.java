@@ -36,7 +36,7 @@ public class CardsController {
         return cardsServices.findAll();
     } // вернем список всех карт
 
-    @GetMapping("/{id}") //http://localhost:8080/card/all
+    @GetMapping("/{id}") //http://localhost:8080/card/1
     public Cards getCard(@PathVariable("id") long id ){ // вернем одну карту id
         //Cards cards = new Cards(cardsServices.findOne(id));    
         return cardsServices.findOne(id);
@@ -44,8 +44,11 @@ public class CardsController {
 
     @GetMapping("/email/{email}") //http://localhost:8080/card/all
     public int getEmail(@PathVariable("email") String email){ // вернем одну карту id
-        return cardsServices.findBalabce(email);
+        return cardsServices.findBalance(email);
     }
+
+
+
 
     @PostMapping ("/new")//http://localhost:8080/card/new
     // метод создания новой карты

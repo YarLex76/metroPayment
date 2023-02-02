@@ -1,6 +1,7 @@
 package ru.sukharenko.springtest.metroPayment.services;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sukharenko.springtest.metroPayment.models.BalanceReplenishment;
@@ -15,6 +16,7 @@ import java.util.List;
 public class BalanceReplenishmentServices {
     private final BalanceReplenishmentRepository balanceReplenishmentRepository;
 
+    @Autowired
     public BalanceReplenishmentServices(BalanceReplenishmentRepository balanceReplenishmentRepository) {
         this.balanceReplenishmentRepository = balanceReplenishmentRepository;
     }
