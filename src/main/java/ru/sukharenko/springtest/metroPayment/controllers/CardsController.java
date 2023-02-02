@@ -28,7 +28,7 @@ public class CardsController {
 
     @GetMapping("/hello") //http://localhost:8080/card/hello
     public String hello(){
-        return "Hello!";
+        return "Hello from CardsController!";
     } // тестовый метод
 
     @GetMapping("/all") //http://localhost:8080/card/all
@@ -52,7 +52,7 @@ public class CardsController {
     // @RequestBody  - преобразует json в объект класса Cards
     // @Valid - проверит входящие данные на соответствие аннотаций над полями в классе Cards (@NotEmpty, @Size и др)
     // BindingResult bindingResult - для хранения ошибок
-    public ResponseEntity <HttpStatus> create(@RequestBody @Valid Cards cards,
+    public ResponseEntity <HttpStatus> create(@RequestBody @Valid Cards card,
                                               BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             // обработка ошибок в случае их возникновения, отправит поле ошибки - и сообщение об ошибке
@@ -69,7 +69,7 @@ public class CardsController {
             throw new CardNotCreatedException(errorMsg.toString());
 
         }
-        cardsServices.save(cards);
+        cardsServices.save(card);
         return ResponseEntity.ok(HttpStatus.OK); // отправляется пустой HTTP ответ со статусом 200 (сообщение ок)
     }
 

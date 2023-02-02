@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity // помечает класс связанный с БД
@@ -25,6 +27,9 @@ public class Cards {
 
     @Column (name = "card_balance")
     private int cardBalance;
+
+    @OneToMany
+    private List <BalanceReplenishment> balanceReplenishmentsList = new ArrayList<>();
 
     public Cards() { // пустой конструктор
     }
@@ -58,12 +63,22 @@ public class Cards {
         this.cardBalance = cardBalance;
     }
 
+
+    public List<BalanceReplenishment> getBalanceReplenishmentsList() {
+        return balanceReplenishmentsList;
+    }
+
+    public void setBalanceReplenishmentsList(List<BalanceReplenishment> balanceReplenishmentsList) {
+        this.balanceReplenishmentsList = balanceReplenishmentsList;
+    }
+
     @Override
     public String toString() {
         return "Cards{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", cardBalance=" + cardBalance +
+                ", balanceReplenishmentsList=" + balanceReplenishmentsList +
                 '}';
     }
 }
