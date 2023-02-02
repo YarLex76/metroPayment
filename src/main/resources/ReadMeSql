@@ -1,0 +1,23 @@
+CREATE TABLE Cards ( -- карта проезда
+    id SERIAL PRIMARY KEY,
+    email varchar UNIQUE NOT NULL, -- авторизация по уникальному email
+    card_balance int default 0  -- баланс карты
+);
+
+INSERT INTO cards (email) values ('test1@mail.ru');
+INSERT INTO cards (email) values ('test2@mail.ru');
+INSERT INTO cards (email) values ('test3@mail.ru');
+
+
+CREATE TABLE Trip(  -- таблица оплаты проезда
+    id SERIAL PRIMARY KEY,
+    card_id int NOT NULL, -- foreign key for id(Table - cards)
+    date_trip TIMESTAMP NOT NULL
+)
+
+CREATE TABLE Balance_replenishment(  -- таблица пополнения баланса
+    id SERIAL PRIMARY KEY,
+    card_id int NOT NULL, -- foreign key for id(Table - cards)
+    date_trip TIMESTAMP NOT NULL, -- время платежа
+    price int NOT NULL -- стоимость платежа
+);
