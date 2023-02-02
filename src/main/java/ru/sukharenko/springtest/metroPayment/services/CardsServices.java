@@ -29,9 +29,14 @@ public class CardsServices {
         return foundCard.orElse(null);
     }
 
-    @Transactional // будет открыта транзакция т.к. будет происходить изменение в БД
+    @Transactional // Будет открыта транзакция т.к. будет происходить изменение в БД
     public void save(Cards card){
         cardsRepository.save(card);
+    }
+
+    public int findBalabce (String email){ // вернем баланс по емайлу
+        Optional<Cards> foundCard = cardsRepository.findByEmail(email);
+        return foundCard.get().getCardBalance();
     }
 
 

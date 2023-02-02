@@ -15,7 +15,7 @@ import ru.sukharenko.springtest.metroPayment.util.CardNotCreatedException;
 
 import java.util.List;
 
-@RestController
+@RestController   // @RestController ==  @Controller + @ResponseBody (отдает Json на get запрос)
 @RequestMapping("/card")
 public class CardsController {
 
@@ -26,18 +26,26 @@ public class CardsController {
         this.cardsServices = cardsServices;
     } // конструктор для  CardsServices
 
-    @ResponseBody  // отдает Json на get запрос
     @GetMapping("/hello") //http://localhost:8080/card/hello
     public String hello(){
         return "Hello!";
     } // тестовый метод
 
-    @ResponseBody // отдает Json на get запрос
     @GetMapping("/all") //http://localhost:8080/card/all
     public List<Cards> getCards(){
         return cardsServices.findAll();
     } // вернем список всех карт
 
+    @GetMapping("/{id}") //http://localhost:8080/card/all
+    public Cards getCard(@PathVariable("id") long id ){ // вернем одну карту id
+        //Cards cards = new Cards(cardsServices.findOne(id));    
+        return cardsServices.findOne(id);
+    }
+
+    @GetMapping("/email/{email}") //http://localhost:8080/card/all
+    public int getEmail(@PathVariable("email") String email){ // вернем одну карту id
+        return cardsServices.findBalabce(email);
+    }
 
     @PostMapping ("/new")//http://localhost:8080/card/new
     // метод создания новой карты
