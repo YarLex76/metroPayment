@@ -12,13 +12,13 @@ public class CardsDTO {
     @Email(message = "sample email - username@mail.com")
     private String email;
 
-    // Конструкторы почему-то не нужны????
-    /*  public CardsDTO() {
-    }
+    private int cardBalance;
 
-    public CardsDTO(String email) {
-        this.email = email;
-    }*/
+    /*
+    Конструкторы почему-то не нужны????
+        public CardsDTO() {    }
+        public CardsDTO(String email) {this.email = email;}
+        */
 
     public String getEmail() {
         return email;
@@ -26,5 +26,13 @@ public class CardsDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getCardBalance() {
+        return cardBalance;
+    }
+
+    public void setCardBalance(int cardBalance) {
+        this.cardBalance = cardBalance;
     }
 }

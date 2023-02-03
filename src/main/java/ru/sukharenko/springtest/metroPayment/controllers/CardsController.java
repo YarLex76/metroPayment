@@ -40,15 +40,16 @@ public class CardsController {
         return cardsServices.findAll().stream().map(this::convertToCardDTO).collect(Collectors.toList());
     }
 
-    @GetMapping("/{id}") //http://localhost:8080/card/1
-    public CardsDTO getCard(@PathVariable("id") long id ){ // вернем одну карту id
+    @GetMapping("/{id}") //http://localhost:8080/card/1     // вернем одну карту id
+    public CardsDTO getCard(@PathVariable("id") long id ){
         //Cards cards = new Cards(cardsServices.findOne(id));
         return convertToCardDTO(cardsServices.findOne(id));
     }
 
-    @GetMapping("/email/{email}") //http://localhost:8080/card/email/test1@tect.ru -- вернет баланс карты по мылу
-    public int getEmail(@PathVariable("email") String email){ // вернем одну карту id
-        return 1;//cardsServices.findBalance(email);
+    @GetMapping("/email/{email}") //http://localhost:8080/card/email/test1@test.ru -- вернет баланс карты по мылу
+    public int getEmail(@PathVariable("email") String email){ // вернем баланс карты по email
+        CardsDTO cardsDTO = convertToCardDTO(cardsServices.findOne(email));
+        return cardsDTO.getCardBalance();
     }
 
     @PostMapping ("/new")//http://localhost:8080/card/new

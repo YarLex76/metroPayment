@@ -29,6 +29,12 @@ public class CardsServices {
         return foundCard.orElse(null);
     }
 
+    public Cards findOne (String email){ // вернем одну карту по id
+        Optional<Cards> foundCard = cardsRepository.findByEmail(email);
+        return foundCard.orElse(null);
+    }
+
+
     @Transactional // Будет открыта транзакция т.к. будет происходить изменение в БД
     public void save(Cards card){
         enrichCard(card); // добавляю недостающие данные, не прешедшие от пользователя

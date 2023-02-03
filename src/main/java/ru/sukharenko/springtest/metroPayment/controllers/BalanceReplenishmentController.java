@@ -47,11 +47,8 @@ public class BalanceReplenishmentController {
                         .append(error.getDefaultMessage()) // сообщение из поля
                         .append("; ");
             }
-
             throw new CardNotCreatedException(errorMsg.toString());
-
         }
-
         bRS.save(bR);
         return ResponseEntity.ok(HttpStatus.OK); // отправляется пустой HTTP ответ со статусом 200 (сообщение ок)
     }
