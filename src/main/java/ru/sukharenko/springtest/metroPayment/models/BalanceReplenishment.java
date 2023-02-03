@@ -1,7 +1,6 @@
 package ru.sukharenko.springtest.metroPayment.models;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import java.util.Date;

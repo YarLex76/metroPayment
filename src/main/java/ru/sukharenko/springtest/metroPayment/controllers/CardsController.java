@@ -85,7 +85,7 @@ public class CardsController {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-    private Cards convertToCard (CardsDTO cardDTO){
+    public Cards convertToCard (CardsDTO cardDTO){
         // Cards card = new Cards();
         // card.setEmail(cardDTO.getEmail());
         // return card;
