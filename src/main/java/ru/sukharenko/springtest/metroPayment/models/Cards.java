@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Cards {
     @Column (name = "card_balance")
     private int cardBalance;
 
-    @OneToMany (mappedBy = "owner") // ссылка на поле в связывающем классе
+    @OneToMany (mappedBy = "owner", cascade = CascadeType.ALL) // ссылка на поле в связывающем классе
     private List <BalanceReplenishment> balanceReplenishmentsList;
 
     public Cards() {    }

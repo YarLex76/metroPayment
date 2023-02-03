@@ -31,12 +31,17 @@ public class CardsServices {
 
     @Transactional // Будет открыта транзакция т.к. будет происходить изменение в БД
     public void save(Cards card){
+        enrichCard(card); // добавляю недостающие данные, не прешедшие от пользователя
         cardsRepository.save(card);
     }
 
     public int findBalance (String email){ // вернем баланс по емайлу
         Optional<Cards> foundCard = cardsRepository.findByEmail(email);
         return foundCard.get().getCardBalance();
+    }
+
+    private void enrichCard(Cards card){
+        card.setCardBalance(0); // присваиваю стартовое значение баланса == 0
     }
 
 

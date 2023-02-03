@@ -1,6 +1,7 @@
 package ru.sukharenko.springtest.metroPayment.models;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import java.util.Date;
@@ -15,8 +16,10 @@ public class BalanceReplenishment {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // генерация первичного ключа на сервере
     private long id;
 
-    @ManyToOne
-    @JoinColumn (name = "card_id", referencedColumnName = "id") // для объединения таблиц по внешнему ключу
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "card_id", referencedColumnName = "id")
+    //@JsonProperty (access = JsonProperty.Access.WRITE_ONLY)
     private Cards owner; // владелец платежа
 
     @Column(name = "date_trip")
